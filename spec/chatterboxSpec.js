@@ -5,7 +5,7 @@ describe('chatterbox', function() {
 
     before(function() {
       ajaxSpy = sinon.stub($, 'ajax');
-      App.initialize();
+      MessagesView.initialize();
     });
 
     beforeEach(function() {
@@ -86,7 +86,7 @@ describe('chatterbox', function() {
     it('should add a friend upon clicking their username', function() {
       sinon.spy(Friends, 'toggleStatus');
 
-      App.initialize();
+      MessagesView.initialize();
       MessagesView.renderMessage({
         username: 'Mel Brooks',
         text: 'I didn\'t get a harumph outa that guy.!',
@@ -103,7 +103,7 @@ describe('chatterbox', function() {
       var prompt = window.prompt;
       window.prompt = sinon.stub().returns('testroom');
 
-      App.initialize();
+      MessagesView.initialize();
       $('#rooms').find('button').trigger('click');
       expect(Rooms.add.called).to.be.true;
 
@@ -114,7 +114,7 @@ describe('chatterbox', function() {
     it('should try to send a message upon clicking submit', function() {
       sinon.spy(Parse, 'create');
 
-      App.initialize();
+      MessagesView.initialize();
       $('#message').val('Why so many Mel Brooks quotes?');
       $('form .submit').trigger('submit');
       expect(Parse.create.called).to.be.true;
