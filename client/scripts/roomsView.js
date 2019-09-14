@@ -6,7 +6,13 @@ var RoomsView = {
   initialize: function() {
   },
 
-  render: function() {
+  renderRoom: function(room) {
+    // call template
+    this.$select.html(function() {
+      return `<option value=${room}>${room}</option>`;
+    });
   }
+
+
 
 };

@@ -1,17 +1,14 @@
 var App = {
 
   $spinner: $('.spinner img'),
-
   username: 'anonymous',
-
-
 
   initialize: function() {
     App.username = window.location.search.substr(10);
 
     FormView.initialize();
     RoomsView.initialize();
-
+    MessagesView.initialize();
 
     // Fetch initial batch of messages
     App.startSpinner();
@@ -21,13 +18,13 @@ var App = {
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
-      console.log('data from fetch:', data);
-      MessagesView.data = data;
-      // moved from line 14
-      MessagesView.initialize();
-      // msgsView render(data)
+      console.log('data from fetch1:', data);
+      App.data = data;
       callback();
+      MessagesView.retrieveMessages();// call some iterative funtion on MessagesView
+      console.log('data from fetch2:', App.data);
     });
+
   },
 
   startSpinner: function() {
