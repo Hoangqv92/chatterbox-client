@@ -1,5 +1,5 @@
 var Messages = {
-  username:'',
+  username: 'ERROR NOT ASSIGNED',
   text: $('#message').val(),
-  roomname: '',
+  roomname: 'ERROR NOT ASSIGNED'
 };
